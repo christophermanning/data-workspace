@@ -1,0 +1,17 @@
+services:
+  # http://127.0.0.1:8888/lab
+  jupyter:
+    # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook
+    image: quay.io/jupyter/base-notebook
+    volumes:
+      - ./jupyter:/home/jovyan/work
+      - .:/src
+    ports:
+      - 8888:8888
+    # https://jupyter-server.readthedocs.io/en/latest/other/full-config.html
+    command: start-notebook.py --IdentityProvider.token=''
+  dbt:
+    build: dbt_project/.
+    volumes:
+      - .:/src
+    command: dbt build
