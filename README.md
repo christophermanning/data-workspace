@@ -6,6 +6,7 @@ An example workspace for data engineering, data analytics, and data science deve
 
 - Docker
 - Docker Compose
+- Airflow
 - dbt
 - DuckDB
 - Jupyter

@@ -7,4 +7,4 @@ RUN pip install -r /tmp/requirements.txt
 
 COPY profiles.example.yml /root/.dbt/profiles.yml
 
-WORKDIR /src/dbt_project
+WORKDIR /dbt_project

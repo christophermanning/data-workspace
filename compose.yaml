@@ -1,17 +1,48 @@
 services:
+  # https://airflow.apache.org/docs/docker-stack/index.html
+  airflow:
+    build: ./airflow
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./duckdb:/duckdb
+    ports:
+      - 8080:8080
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://db:db@database/db
+    depends_on:
+      - database
+    command: bash -c "/entrypoint.sh"
+
+  database:
+    image: postgres:latest
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: db
+      POSTGRES_DB: db
+
   # http://127.0.0.1:8888/lab
   jupyter:
     # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook
     image: quay.io/jupyter/base-notebook
     volumes:
       - ./jupyter:/home/jovyan/work
-      - .:/src
+      - ./duckdb:/duckdb
     ports:
       - 8888:8888
     # https://jupyter-server.readthedocs.io/en/latest/other/full-config.html
     command: start-notebook.py --IdentityProvider.token=''
+
   dbt:
     build: dbt_project/.
     volumes:
-      - .:/src
+      - ./dbt_project:/dbt_project
+      - ./duckdb:/duckdb
     command: dbt build
+
+volumes:
+  # persist the postgres data when the container restarts
+  pgdata:
