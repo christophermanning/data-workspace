@@ -4,6 +4,7 @@ from airflow.exceptions import AirflowSkipException
 import urllib
 import os
 
+
 class ExtractOperator(BaseOperator):
     def __init__(self, uri: str, filename: str, **kwargs) -> None:
         super().__init__(**kwargs)

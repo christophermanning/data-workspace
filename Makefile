@@ -13,6 +13,7 @@ dbt-test:
 	@docker-compose run dbt /bin/bash -c "dbt test"
 
 format:
+	@docker-compose run airflow bash -c "black ."
 	@docker-compose run dbt /bin/bash -c "sqlfluff format"
 
 up:

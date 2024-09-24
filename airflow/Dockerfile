@@ -16,7 +16,7 @@ RUN apt-get update \
 USER airflow
 
 # psycopg2 needed to connect to a postgresql database
-RUN pip install --no-cache-dir psycopg2 duckdb
+RUN pip install --no-cache-dir psycopg2 duckdb black
 
 USER root
 COPY entrypoint.sh /
