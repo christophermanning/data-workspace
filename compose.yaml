@@ -4,6 +4,7 @@ services:
     build: ./airflow
     volumes:
       - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/plugins:/opt/airflow/plugins
       - ./airflow/data:/data
       - ./duckdb:/duckdb
     ports:
