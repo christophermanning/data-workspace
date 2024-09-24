@@ -4,6 +4,7 @@ services:
     build: ./airflow
     volumes:
       - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/data:/data
       - ./duckdb:/duckdb
     ports:
       - 8080:8080
@@ -38,10 +39,11 @@ services:
 
   dbt:
     build: dbt_project/.
+    tty: true
     volumes:
       - ./dbt_project:/dbt_project
       - ./duckdb:/duckdb
-    command: dbt build
+    command: flask run --host=0.0.0.0 --debug
 
 volumes:
   # persist the postgres data when the container restarts
