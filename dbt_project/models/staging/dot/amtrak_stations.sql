@@ -2,24 +2,24 @@ with
 
 source as (
 
-    select * from {{ source('dot','amtrak_stations') }}
+  select * from {{ source('dot','amtrak_stations') }}
 
-),
+)
 
-renamed as (
+, renamed as (
 
-    select
-      lon as longitude
+  select
+    lon as longitude
     , lat as latitude
-    , Code as code
-    , StnType as station_type
-    , StationName as station_name
+    , code as code
+    , stntype as station_type
+    , stationname as station_name
 
-    from source
+  from source
 
-),
+)
 
-filtered as (
+, filtered as (
 
   select * from renamed
 

@@ -2,23 +2,23 @@ with
 
 source as (
 
-    select * from {{ source('dot','bikeshare') }}
+  select * from {{ source('dot','bikeshare') }}
 
-),
+)
 
-renamed as (
+, renamed as (
 
-    select
-      longitude
+  select
+    longitude
     , latitude
     , year
     , system_name
 
-    from source
+  from source
 
-),
+)
 
-filtered as (
+, filtered as (
 
   select * from renamed
   where year = '2024'
