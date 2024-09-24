@@ -9,11 +9,12 @@ source as (
 , renamed as (
 
   select
-    lon as longitude
-    , lat as latitude
+    lat as latitude
+    , lon as longitude
+    , ST_POINT(lat, lon) as geom
     , code as code
     , stntype as station_type
-    , stationname as station_name
+    , stationname as name
 
   from source
 

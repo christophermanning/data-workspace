@@ -9,10 +9,11 @@ source as (
 , renamed as (
 
   select
-    longitude
-    , latitude
+    latitude as lat
+    , longitude as lon
+    , ST_POINT(lat, lon) as geom
     , year
-    , system_name
+    , system_name as name
 
   from source
 
