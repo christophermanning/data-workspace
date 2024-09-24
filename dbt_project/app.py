@@ -14,7 +14,7 @@ app = Flask(__name__)
 def run():
     cli_args = ["run"]
 
-    select = ''.join(c for c in request.form.get("select", "") if c.isalpha())
+    select = ''.join(c for c in request.form.get("select", "") if c.isalpha() or c == "_")
     if select != "":
         cli_args.extend(["--select", select])
 
@@ -24,7 +24,7 @@ def run():
         return str(res.exception), 500
 
     if len(res.result) == 0:
-        return "Nothing built; adjust `select` parameter", 400
+        return f"Nothing built for {select}; adjust `select` parameter", 400
 
     lines = []
 
