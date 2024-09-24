@@ -48,7 +48,7 @@ def amtrak_stations():
         task_id="transform",
         http_conn_id="dbt",
         endpoint="run",
-        data={"select": "amtrak_stations"},
+        data={"select": "*amtrak_stations*"},
         log_response=True,
     )
 

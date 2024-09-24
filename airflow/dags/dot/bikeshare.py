@@ -37,7 +37,7 @@ def bikeshare():
         task_id="transform",
         http_conn_id="dbt",
         endpoint="run",
-        data={"select": "bikeshare"},
+        data={"select": "*bikeshare*"},
         log_response=True,
     )
 

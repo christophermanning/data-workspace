@@ -14,7 +14,7 @@ app = Flask(__name__)
 def run():
     cli_args = ["run"]
 
-    select = ''.join(c for c in request.form.get("select", "") if c.isalpha() or c == "_")
+    select = ''.join(c for c in request.form.get("select", "") if c.isalpha() or c == "_" or c == "*")
     if select != "":
         cli_args.extend(["--select", select])
 
