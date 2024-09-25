@@ -29,7 +29,7 @@ services:
   # http://127.0.0.1:8888/lab
   jupyter:
     # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook
-    image: quay.io/jupyter/base-notebook
+    build: ./jupyter
     volumes:
       - ./jupyter:/home/jovyan/work
       - ./duckdb:/duckdb
