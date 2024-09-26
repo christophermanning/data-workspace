@@ -1,0 +1,6 @@
+sources:
+  - name: divvy
+    schema: raw
+    tables:
+      - name: divvy_stations
+      - name: divvy_trips
