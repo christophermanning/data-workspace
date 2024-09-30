@@ -55,13 +55,15 @@ events as (
 
 , final as (
 
-  -- use the name/lat/lon from the GTFS feed if it's available
+  -- use the fields from the GTFS feed if they exist
   select
     s.station_id
+    , case when ds.station_id is null then null else ds.station_id end as gtfs_station_id
     , ds.station_id is not null as active
     , case when ds.name is null then s.name else ds.name end as name
     , case when ds.lat is null then s.lat else ds.lat end as lat
     , case when ds.lon is null then s.lon else ds.lon end as lon
+    , case when ds.capacity is null then null else ds.capacity end as capacity
   from unioned s
 
   left join stations ds on ds.short_name = s.station_id

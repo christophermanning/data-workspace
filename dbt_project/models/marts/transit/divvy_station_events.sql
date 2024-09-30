@@ -17,6 +17,7 @@ trips as (
     , ST_POINT(lat, lon) as geom
     , rideable_type
     , 'start' as event_action
+    , member_casual
 
   from trips
 
@@ -31,6 +32,7 @@ trips as (
     , ST_POINT(lat, lon) as geom
     , rideable_type
     , 'end' as event_action
+    , member_casual
 
   from trips
 
