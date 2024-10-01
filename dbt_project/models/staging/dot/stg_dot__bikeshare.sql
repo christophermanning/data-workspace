@@ -14,6 +14,9 @@ source as (
     , ST_POINT(lat, lon) as geom
     , year
     , system_name as name
+    , bike_id as bike_id
+    , city as city
+    , state as state
 
   from source
 
