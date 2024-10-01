@@ -3,4 +3,4 @@ FROM quay.io/jupyter/base-notebook
 
 RUN python -m pip install --upgrade pip
 
-RUN pip install --no-cache-dir black duckdb ipywidgets ipyleaflet pandas matplotlib
+RUN pip install --no-cache-dir black black[jupyter] duckdb ipywidgets ipyleaflet pandas matplotlib
