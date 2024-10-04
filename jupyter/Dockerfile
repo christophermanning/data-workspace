@@ -15,3 +15,6 @@ RUN python -m pip install --upgrade pip
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
+
+# disable popups
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
