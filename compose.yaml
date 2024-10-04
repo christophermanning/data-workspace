@@ -31,7 +31,7 @@ services:
     # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-base-notebook
     build: ./jupyter
     volumes:
-      - ./jupyter:/home/jovyan/work
+      - ./jupyter/notebooks:/home/jovyan/work
       - ./duckdb:/duckdb
     ports:
       - 8888:8888
