@@ -14,6 +14,7 @@ dbt-test:
 format:
 	@docker-compose run airflow bash -c "black ." || true
 	@docker-compose run jupyter bash -c "black ." || true
+	@docker-compose run jupyter bash -c "jupyter nbconvert --ClearOutputPreprocessor.enabled=True --clear-output */*.ipynb"
 	@docker-compose run dbt /bin/bash -c "sqlfluff format" || true
 
 up:
