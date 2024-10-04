@@ -9,14 +9,21 @@ ENV _AIRFLOW_WWW_USER_PASSWORD=admin
 USER root
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-        build-essential libpq-dev \
+        build-essential libpq-dev wget unzip \
   && apt-get autoremove -yqq --purge \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+# install required duckdb extensions in the image to avoid downloading the extension on each docker run
+RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.1/duckdb_cli-linux-aarch64.zip \
+    && unzip duckdb_cli-linux-aarch64.zip \
+    && mv duckdb /usr/local/bin/
+RUN duckdb -c "INSTALL spatial"
+
 USER airflow
 
-# psycopg2 needed to connect to a postgresql database
-RUN pip install --no-cache-dir psycopg2 duckdb black
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
 USER root
 COPY entrypoint.sh /

@@ -1,0 +1,6 @@
+black[jupyter]~=24.8
+duckdb~=1.1
+ipyleaflet~=0.19
+ipywidgets~=8.1
+matplotlib~=3.9
+pandas~=2.2

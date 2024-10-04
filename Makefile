@@ -1,10 +1,9 @@
 NAME=data-workspace
 
 build:
+	@docker-compose build airflow
 	@docker-compose build dbt
-
-shell:
-	@docker-compose run dbt /bin/bash
+	@docker-compose build jupyter
 
 dbt-build:
 	@docker-compose run dbt /bin/bash -c "dbt build"

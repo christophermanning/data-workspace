@@ -11,7 +11,7 @@ class QueryResult:
         self.params = params
 
         self.conn = duckdb.connect("/duckdb/dev.duckdb")
-        self.conn.query("INSTALL SPATIAL; LOAD SPATIAL")
+        self.conn.query("LOAD spatial")
 
     def _ipython_display_(self):
         self.show()
