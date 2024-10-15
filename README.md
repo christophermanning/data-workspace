@@ -1,15 +1,17 @@
 # data-workspace
 
-An example workspace for data engineering, data analytics, and data science development.
+A workspace for data engineering, data analytics, and data science workflows.
 
 ## Components
 
+- Airflow
+  - http://localhost:8080/home
+- Jupyter
+  - http://localhost:8888/lab
 - Docker
 - Docker Compose
-- Airflow
 - dbt
 - DuckDB
-- Jupyter
 
 ## Running
 
