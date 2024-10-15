@@ -1,36 +1,52 @@
 # This proxy will close the connection after querying to avoid concurrency locks with external processes: Airflow, dbt, other notebooks
 import duckdb
+from duckdb import ConnectionException
 
 
 class QueryResult:
     query = None
     params = None
 
-    def __init__(self, query, params):
-        self.query = query
+    def __init__(self, query_string, params):
+        self.query_string = query_string
         self.params = params
+        self.connect()
 
+    def connect(self):
         self.conn = duckdb.connect("/duckdb/dev.duckdb")
         self.conn.query("LOAD spatial")
 
     def _ipython_display_(self):
         self.show()
 
+    def query(self):
+        e = None
+
+        # retry with reconnect if connection is closed
+        for _ in range(2):
+            try:
+                result = self.conn.query(self.query_string, params=self.params)
+                return result
+            except ConnectionException as ce:
+                self.connect()
+                e = ce
+        raise e
+
     def show(self):
-        q = self.conn.query(self.query, params=self.params).show()
+        result = self.query().show()
         self.conn.close()
-        return q
+        return result
 
     def df(self):
-        q = self.conn.query(self.query, params=self.params).df()
+        result = self.query().df()
         self.conn.close()
-        return q
+        return result
 
     def fetchall(self):
-        q = self.conn.query(self.query, params=self.params).fetchall()
+        result = self.query().fetchall()
         self.conn.close()
-        return q
+        return result
 
 
-def query(query, params=None):
-    return QueryResult(query, params)
+def query(query_string, params=None):
+    return QueryResult(query_string, params)
