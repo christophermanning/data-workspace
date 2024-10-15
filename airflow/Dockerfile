@@ -1,5 +1,7 @@
 FROM apache/airflow:slim-2.10.2
 
+ENV DUCKDB_VERSION=1.1.2
+
 ENV AIRFLOW__DATABASE__LOAD_DEFAULT_CONNECTIONS=False
 ENV AIRFLOW__CORE__LOAD_EXAMPLES=False
 ENV _AIRFLOW_DB_MIGRATE=True
@@ -17,13 +19,15 @@ RUN apt-get update \
 # install required duckdb extensions in the image to avoid downloading the extension on each docker run
 RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.1/duckdb_cli-linux-aarch64.zip \
     && unzip duckdb_cli-linux-aarch64.zip \
-    && mv duckdb /usr/local/bin/
+    && mv duckdb /usr/local/bin/ \
+    && rm duckdb_cli-linux-aarch64.zip
 RUN duckdb -c "INSTALL spatial"
 
 USER airflow
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
+RUN python -m pip install --force-reinstall -v "duckdb==${DUCKDB_VERSION}"
 
 USER root
 COPY entrypoint.sh /
