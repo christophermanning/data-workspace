@@ -10,6 +10,8 @@ from ipywidgets import HTML, Button, Layout
 
 class Map:
     m = None
+    markers = []
+
     map_markers = None
     center = None
 
@@ -27,6 +29,7 @@ class Map:
         self.m.add(WidgetControl(widget=button, position="topleft"))
 
     def _ipython_display_(self):
+        self.add_markers(self.markers)
         display(self.m)
 
     def reset_zoom(self, params=None):
