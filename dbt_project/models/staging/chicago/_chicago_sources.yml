@@ -3,3 +3,4 @@ sources:
     schema: raw
     tables:
       - name: chicago_escooter_trips
+      - name: chicago_wards

@@ -41,6 +41,9 @@ class Map:
         for marker in markers:
             self.add_marker(marker)
 
+    def add(self, o):
+        self.m.add(o)
+
     def add_marker(self, marker):
         message = HTML()
         if marker.description:
