@@ -2,4 +2,4 @@ sources:
   - name: chicago
     schema: raw
     tables:
-      - name: escooter_trips
+      - name: chicago_escooter_trips
