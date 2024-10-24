@@ -16,8 +16,7 @@ trips as (
     , vendor
     , start_community_area_name as community_area_name
     , start_community_area_number as commmunity_area_number
-    , start_centroid_latitude as lat
-    , start_centroid_longitude as lon
+    , ST_POINT(start_centroid_longitude, start_centroid_latitude)::GEOMETRY as geom
     , 'start' as event_action
 
   from trips
@@ -34,8 +33,7 @@ trips as (
     , vendor
     , end_community_area_name as community_area_name
     , end_community_area_number as commmunity_area_number
-    , end_centroid_latitude as lat
-    , end_centroid_longitude as lon
+    , ST_POINT(end_centroid_longitude, end_centroid_latitude)::GEOMETRY as geom
     , 'end' as event_action
 
   from trips
