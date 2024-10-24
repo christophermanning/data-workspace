@@ -1,0 +1,5 @@
+sources:
+  - name: census
+    schema: raw
+    tables:
+      - name: census_geo_boundaries

@@ -1,3 +1,4 @@
 black~=24.8
 # psycopg2 needed to connect to a postgresql database
 psycopg2~=2.9
+geopandas~=1.0

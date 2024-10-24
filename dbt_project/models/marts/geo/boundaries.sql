@@ -19,6 +19,8 @@ chicago_wards as (
 , final as (
 
   select * from chicago_boundary
+  union
+  select * from {{ ref('stg_census__geo_boundaries') }}
 
 )
 
