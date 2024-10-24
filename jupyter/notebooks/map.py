@@ -9,15 +9,11 @@ from ipywidgets import HTML, Button, Layout
 
 
 class Map:
-    m = None
-    markers = []
-
-    map_markers = None
-    center = None
-
     def __init__(self, center=(41.8, -87.5)):
         self.m = ipyleaflet.Map()
         self.center = center
+
+        self.markers = []
 
         self.reset_zoom()
 
@@ -59,11 +55,6 @@ class Map:
 
 
 class Marker:
-    location = None
-    description = None
-    icon = None
-    color = None
-
     def __init__(self, location, description=None, icon="home", color="blue"):
         self.location = location
         self.description = description

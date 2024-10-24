@@ -4,9 +4,6 @@ from duckdb import ConnectionException
 
 
 class QueryResult:
-    query = None
-    params = None
-
     def __init__(self, query_string, params):
         self.query_string = query_string
         self.params = params
