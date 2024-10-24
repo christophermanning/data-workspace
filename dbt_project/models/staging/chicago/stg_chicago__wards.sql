@@ -9,7 +9,7 @@ source as (
 , transform as (
 
   select
-    ward_id as ward
+    ward_id as id
     , the_geom::GEOMETRY as geom
   from source
 
