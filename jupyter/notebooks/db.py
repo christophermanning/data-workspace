@@ -30,6 +30,10 @@ class QueryResult:
             except ConnectionException as ce:
                 self.connect()
                 e = ce
+            except Exception as e:
+                self.conn.close()
+                raise e
+
         raise e
 
     def show(self):
