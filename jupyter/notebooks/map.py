@@ -32,6 +32,11 @@ class Map:
         self.m.center = self.center
         self.m.zoom = 10
 
+    def redraw(self):
+        self.map_markers.clear_layers()
+        for marker in self.markers:
+            self.add_marker(marker)
+
     def add_markers(self, markers):
         self.map_markers.clear_layers()
         for marker in markers:
