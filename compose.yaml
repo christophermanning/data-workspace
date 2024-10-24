@@ -1,4 +1,17 @@
 services:
+  homepage:
+    build: ./homepage
+    ports:
+      - 3000:3000
+    volumes:
+      - ./homepage:/src
+    environment:
+      SERVICES: '{
+        "Airflow": "http://localhost:8080/home",
+        "Jupyter": "http://localhost:8888/lab/tree/work"
+        }'
+    command: flask run --host=0.0.0.0 --port=3000 --debug
+
   # https://airflow.apache.org/docs/docker-stack/index.html
   airflow:
     build: ./airflow

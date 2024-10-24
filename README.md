@@ -20,3 +20,4 @@ A workspace for data engineering, data analytics, and data science workflows.
 - `make dbt-build` to run `dbt build`
 - `make dbt-test` to run `dbt test`
 - `make format` to autoformat sql files with sqlfluff
+- http://localhost:3000 to list services
