@@ -17,7 +17,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # install required duckdb extensions in the image to avoid downloading the extension on each docker run
-RUN wget https://github.com/duckdb/duckdb/releases/download/v1.1.1/duckdb_cli-linux-aarch64.zip \
+RUN wget https://github.com/duckdb/duckdb/releases/download/v${DUCKDB_VERSION}/duckdb_cli-linux-aarch64.zip \
     && unzip duckdb_cli-linux-aarch64.zip \
     && mv duckdb /usr/local/bin/ \
     && rm duckdb_cli-linux-aarch64.zip

@@ -1,5 +1,5 @@
 dbt-core~=1.8
-dbt-duckdb~=1.8
+dbt-duckdb~=1.9
 sqlfluff~=3.1
 sqlfluff-templater-dbt~=3.1
 Flask~=3.0
