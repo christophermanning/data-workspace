@@ -17,6 +17,7 @@ amtrak_stations as (
   select
     s.code
     , s.name as station_name
+    , s.location as station_location
     , st_x(s.geom) as station_lat
     , st_y(s.geom) as station_lon
     , b.name as bikeshare_name

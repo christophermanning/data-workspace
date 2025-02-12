@@ -12,9 +12,10 @@ source as (
     lat as latitude
     , lon as longitude
     , ST_POINT(lat, lon) as geom
-    , code as code
-    , stntype as station_type
-    , stationname as name
+    , TRIM(code) as code
+    , TRIM(stntype) as station_type
+    , TRIM(name) as name
+    , TRIM(stationname) as location
 
   from source
 
