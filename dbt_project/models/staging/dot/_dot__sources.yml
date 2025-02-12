@@ -4,3 +4,4 @@ sources:
     tables:
       - name: bikeshare
       - name: amtrak_stations
+      - name: amtrak_routes
