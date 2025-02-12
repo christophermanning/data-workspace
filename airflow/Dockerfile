@@ -1,4 +1,4 @@
-FROM apache/airflow:slim-2.10.2
+FROM apache/airflow:slim-2.10.4
 
 ENV DUCKDB_VERSION=1.1.2
 
