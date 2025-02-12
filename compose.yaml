@@ -28,8 +28,9 @@ services:
       - database
     command: bash -c "/entrypoint.sh"
 
+  # postgres required by airflow
   database:
-    image: postgres:latest
+    image: postgres:15-bookworm
     volumes:
       - pgdata:/var/lib/postgresql/data/
     ports:
