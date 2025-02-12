@@ -8,10 +8,11 @@ A workspace for data engineering, data analytics, and data science workflows.
   - http://localhost:8080/home
 - Jupyter
   - http://localhost:8888/lab
-- Docker
-- Docker Compose
+- Docker and Docker Compose
 - dbt
 - DuckDB
+- Observable Framework
+  - http://localhost:3000
 
 ## Running
 

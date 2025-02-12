@@ -1,0 +1,27 @@
+/* styles for embedding observable framework */
+@import url("observablehq:default.css");
+@import url("observablehq:theme-near-midnight.css");
+
+:root {
+  --theme-background: rgb(17 24 39);
+}
+
+body > #observablehq-center, main {
+  margin: 0 !important;
+  font: 17px/1.5 var(--sans-serif) !important;
+}
+
+.note {
+  background-color: rgb(20, 27, 43) !important;
+}
+
+h1, footer {
+  display: none !important;
+}
+
+a[href^="http"]::after {
+  content: " ↗";
+  font-size: .5rem;
+  top: -4px;
+  position: relative;
+}
