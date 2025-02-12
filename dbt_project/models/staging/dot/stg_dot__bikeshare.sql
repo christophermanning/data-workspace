@@ -13,7 +13,8 @@ source as (
     , longitude as lon
     , ST_POINT(lat, lon) as geom
     , year
-    , system_name as name
+    , TRIM(REGEXP_REPLACE(system_name, '\((.*)\)', '')) as name
+    , TRIM(REGEXP_EXTRACT(system_name, '.*\((.*)\)', 1)) as info
     , bike_id as bike_id
     , city as city
     , state as state
