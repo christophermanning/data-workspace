@@ -34,18 +34,24 @@ class QueryResult:
         raise e
 
     def show(self):
-        result = self.query().show()
-        self.conn.close()
+        try:
+            result = self.query().show()
+        finally:
+            self.conn.close()
         return result
 
     def df(self):
-        result = self.query().df()
-        self.conn.close()
+        try:
+            result = self.query().df()
+        finally:
+            self.conn.close()
         return result
 
     def fetchall(self):
-        result = self.query().fetchall()
-        self.conn.close()
+        try:
+            result = self.query().fetchall()
+        finally:
+            self.conn.close()
         return result
 
 
