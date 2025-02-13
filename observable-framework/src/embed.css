@@ -13,6 +13,11 @@ body > #observablehq-center, main {
 
 .note {
   background-color: rgb(20, 27, 43) !important;
+  ul {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 h1, footer {
