@@ -25,9 +25,12 @@ export default {
 Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="${date}">${date}</a>.
 </div>
   `}, // what to show in the footer (HTML)
+
+  // disable widgets not needed for embedding
   sidebar: false, // whether to show the sidebar
   toc: false, // whether to show the table of contents
-  // pager: false, // whether to show previous & next links in the footer
+  pager: false, // whether to show previous & next links in the footer
+
   // output: "dist", // path to the output root for build
   // search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
