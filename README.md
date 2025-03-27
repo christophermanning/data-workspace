@@ -2,6 +2,10 @@
 
 A workspace for data engineering, data analytics, and data science workflows.
 
+## Architecture
+
+![](/goat/architecture.svg)
+
 ## Components
 
 - Airflow

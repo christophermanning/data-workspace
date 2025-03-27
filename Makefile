@@ -1,5 +1,7 @@
 NAME=data-workspace
 
+.PHONY: goat
+
 build:
 	@docker-compose build airflow
 	@docker-compose build dbt
@@ -26,6 +28,10 @@ format:
 
 up:
 	@docker-compose up
+
+goat:
+	docker build -t goat goat/ && \
+	docker run --volume ./goat/:/src --rm -it goat goat -i architecture.txt -o architecture.svg
 
 dev:
 	-tmux kill-session -t "${NAME}"
