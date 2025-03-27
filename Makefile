@@ -31,7 +31,7 @@ up:
 
 goat:
 	docker build -t goat goat/ && \
-	docker run --volume ./goat/:/src --rm -it goat goat -i architecture.txt -o architecture.svg
+	docker run --volume ./goat/:/src --rm -it goat goat -i architecture.txt -o architecture.svg -sds "#2F81F7" -sls "#2F81F7"
 
 dev:
 	-tmux kill-session -t "${NAME}"
