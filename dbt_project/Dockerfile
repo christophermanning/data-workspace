@@ -1,6 +1,6 @@
 FROM python:3.12.4-slim
 
-ENV DUCKDB_VERSION=1.1.2
+ENV DUCKDB_VERSION=1.2.1
 
 RUN apt-get update && apt-get install -y wget unzip
 

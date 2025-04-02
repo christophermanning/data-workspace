@@ -2,7 +2,7 @@
 # https://docs.docker.com/guides/use-case/jupyter/#define-your-environment-in-a-dockerfile
 FROM quay.io/jupyter/base-notebook
 
-ENV DUCKDB_VERSION=1.1.2
+ENV DUCKDB_VERSION=1.2.1
 
 USER root
 RUN apt-get update && apt-get install -y wget unzip
