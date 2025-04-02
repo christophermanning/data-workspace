@@ -39,6 +39,11 @@ services:
     # https://jupyter-server.readthedocs.io/en/latest/other/full-config.html
     command: start-notebook.py --IdentityProvider.token=''
 
+  duckdb:
+    build: ./duckdb
+    volumes:
+      - ./duckdb:/duckdb
+
   dbt:
     build: dbt_project/.
     tty: true

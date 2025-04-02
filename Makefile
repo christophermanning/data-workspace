@@ -1,12 +1,16 @@
 NAME=data-workspace
 
-.PHONY: goat
+.PHONY: goat duckdb
 
 build:
 	@docker-compose build airflow
 	@docker-compose build dbt
+	@docker-compose build duckdb
 	@docker-compose build jupyter
 	@docker-compose build observable-framework
+
+duckdb:
+	@docker-compose run duckdb /bin/bash -c "duckdb dev.duckdb"
 
 dbt-build:
 	@docker-compose run dbt /bin/bash -c "dbt build"
