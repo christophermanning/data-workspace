@@ -1,6 +1,6 @@
 # data-workspace
 
-A workspace for data engineering, data analytics, and data science workflows.
+A workspace for data engineering, data analytics, visualization, and data science workflows.
 
 ## Architecture
 
@@ -8,7 +8,7 @@ A workspace for data engineering, data analytics, and data science workflows.
 
 ## Components
 
-- Airflow
+- Apache Airflow
   - http://localhost:8080/home
 - Jupyter
   - http://localhost:8888/lab
@@ -17,6 +17,8 @@ A workspace for data engineering, data analytics, and data science workflows.
 - DuckDB
 - Observable Framework
   - http://localhost:3000
+- Apache Superset
+  - http://localhost:8088/
 
 ## Running
 

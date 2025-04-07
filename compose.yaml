@@ -44,6 +44,18 @@ services:
     volumes:
       - ./duckdb:/duckdb
 
+  superset:
+    build: ./superset
+    volumes:
+      - ./duckdb:/duckdb
+      - ./superset:/superset
+    environment:
+      SUPERSET_SECRET_KEY: secret
+      SUPERSET_CONFIG_PATH: /superset/superset_config.py
+    command: bash -c "/entrypoint.sh"
+    ports:
+      - 8088:8088
+
   dbt:
     build: dbt_project/.
     tty: true
@@ -62,7 +74,8 @@ services:
       PGURL: postgresql://db:db@database/db
       SERVICES: '{
         "Airflow": "http://localhost:8080/home",
-        "Jupyter": "http://localhost:8888/lab/tree/work"
+        "Jupyter": "http://localhost:8888/lab/tree/work",
+        "Superset": "http://localhost:8088/"
         }'
     ports:
       - 3000:3000
