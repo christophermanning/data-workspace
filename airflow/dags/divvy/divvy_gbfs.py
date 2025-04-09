@@ -16,7 +16,7 @@ from extract_operator import ExtractOperator
     schedule=None,
     start_date=datetime(2024, 1, 1),
 )
-def divvy_stations():
+def divvy_gbfs():
     @task()
     def load(filename, table, partition):
         json_rows = []
@@ -119,4 +119,4 @@ def divvy_stations():
     load_tasks >> http_task
 
 
-divvy_stations()
+divvy_gbfs()
