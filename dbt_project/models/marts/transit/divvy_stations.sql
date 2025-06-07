@@ -70,5 +70,4 @@ events as (
 
 )
 
-
 select * from final
